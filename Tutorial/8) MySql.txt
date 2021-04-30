@@ -1,0 +1,9 @@
+1) add C:\xampp\mysql\bin to Environment Variable
+2) Login to mysql as 
+    mysql -u root
+3) Create Database as
+    create database <databaseName>;
+    create database pizzahouse;
+4) Open <project>/.env
+    check the given line 
+    DB_DATABASE=pizzahouse    

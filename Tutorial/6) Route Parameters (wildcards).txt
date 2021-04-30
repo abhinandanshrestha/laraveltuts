@@ -1,0 +1,22 @@
+1) in routes> web.php
+
+Route::get('/pizzas/{id}', function ($id) {
+
+    //use the $id variable to query the db for a record
+    return view('details',['id' => $id]);
+});
+
+2) in views> details.blade.php
+
+@extends('layouts.layout')
+
+@section('content')
+<div class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="title m-b-md">
+                    Pizza List - {{ $id }}
+                </div>
+                
+            </div>
+</div>
+@endsection

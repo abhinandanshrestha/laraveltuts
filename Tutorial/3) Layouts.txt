@@ -1,0 +1,22 @@
+File Structure:
+-views
+  -layouts
+     -layout.blade.php
+  -welcome.blade.php
+  -pizzas.blade.php
+
+1) Create layouts directory inside views
+2) Make a New file 'layout.blade.php' inside layouts directory
+3) Inside layout.blade.php 
+<html>
+	..
+	<body>
+		@yield('content')
+	</body>
+</html>
+4) Inside your main views <filename>.blade.php:
+
+	@extends('layouts.layout')
+	@section('content')
+		....
+	@endsection

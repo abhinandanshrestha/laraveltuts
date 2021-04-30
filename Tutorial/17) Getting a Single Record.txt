@@ -1,0 +1,31 @@
+1. inside app>Controllers>PizzaController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Pizza;
+
+class PizzaController extends Controller{
+    public function show($id){
+            //use the $id variable to query the db for a record
+
+            //$pizza = Pizza::find($id);
+            $pizza = Pizza::findOrFail($id);
+
+            return view('pizzas.show',['pizza' => $pizza]);
+    }
+}
+
+2. inside resources>views>pizzas>show.blade.php, we are able to use the $pizza variable with corresponding id
+
+@extends('layouts.layout')
+
+@section('content')
+<div class="wrapper pizza-details">
+    <h1> Order for {{ $pizza->name}}</h1>
+    <p class="type"> Type - {{$pizza->type }}</p>
+    <p class="base">Base - {{$pizza->base}}</p>
+</div>
+@endsection

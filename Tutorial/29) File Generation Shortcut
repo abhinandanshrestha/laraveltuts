@@ -1,0 +1,2 @@
+php artisan make:model Kebab -mc 
+//-mc means migrations and controller

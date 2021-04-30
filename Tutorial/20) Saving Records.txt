@@ -1,0 +1,20 @@
+Step 1) Check #19 & follow all steps then make following changes as
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Pizza;
+
+class PizzaController extends Controller{
+    public function store(){
+
+        $pizza=new Pizza();
+        $pizza->name = request('name');
+        $pizza->type = request('type');
+        $pizza->base = request('base');
+
+        $pizza->save(); //Saves into the database
+        return redirect('/')->with('msg','Thanks for your order');
+    }
+}

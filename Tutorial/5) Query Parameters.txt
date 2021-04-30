@@ -1,0 +1,26 @@
+in routes > web.php
+
+Route::get('/pizzas', function () {
+    //get data from db
+    $name = request('name');
+
+    $pizza = [
+        ['type' => 'hawaiian', 'base' => 'cheesy crust'],
+        ['type' => 'volcano', 'base' => 'garlic crust'],
+        ['type' => 'veg supreme', 'base' => 'thin & crispy'],
+    ];
+
+    return view('pizzas',['pizzas' => $pizza,'name' => $name]);
+});
+
+
+--------------------------------------------------------------
+
+in browser
+127.0.0.1:8000/pizzas?name=Ram
+
+--------------------------------------------------------------
+
+in views > pizzas.blade.php
+
+<p> {{ $name }}</p>

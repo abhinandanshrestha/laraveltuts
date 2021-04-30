@@ -1,0 +1,8 @@
+1) download nodejs
+2) npn install
+3) inside webpack.mix.js
+
+add .postCss('resources/css/main.css', 'public/css');
+
+4) copy all public/css/main.css into resources/css/main.css
+5) type: npm run dev to compile all scss into css

@@ -1,0 +1,37 @@
+1) laravel new <projectname>
+2) cd <projectname>/
+3) To run server:
+	php artisan serve
+
+4) Routing Process:
+
+	<project>
+	-routes (this is a folder)
+		-web.php
+	
+5) in web.php:
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/pizzas', function () {
+    //get data from db
+    $name = request('name');
+
+    $pizza = [
+        ['type' => 'hawaiian', 'base' => 'cheesy crust'],
+        ['type' => 'volcano', 'base' => 'garlic crust'],
+        ['type' => 'veg supreme', 'base' => 'thin & crispy'],
+    ];
+
+    return view('pizzas',['pizzas' => $pizza,'name' => $name]);
+});
+
+6) in views > pizza.blade.php :
+
+ you are able to use $name, $pizza variables as 
+
+ <p> {{ $name }}</p>
+ <p> {{ $pizza[0]['type'] }}</p>

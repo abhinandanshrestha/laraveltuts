@@ -1,0 +1,18 @@
+Step1: inside web.php
+
+Route::get('/pizzas', [PizzaController::class,'index'])->name('pizzas.index')->middleware('auth');
+Route::get('/pizzas/create', [PizzaController::class,'create'])->name('pizzas.create');
+Route::get('/pizzas/{id}', [PizzaController::class,'show'])->name('pizzas.show')->middleware('auth');
+Route::post('/pizzas',[PizzaController::class,'store'])->name('pizzas.store');
+Route::delete('/pizzas/{id}',[PizzaController::class,'delete'])->name('pizza.destroy')->middleware('auth');
+
+
+Step2: Using the named routes as
+//  <-- <form action="/pizzas/{{ $pizza->id }}" method="POST"> -->
+    <form action="{{ route('pizzas.destroy',$pizza->$id) }}" method="POST">
+
+
+    another example:
+     <div class="content">
+                <a href="{{ route('pizzas.create') }}">Order a Pizza</a>
+    </div>

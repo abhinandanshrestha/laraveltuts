@@ -1,0 +1,50 @@
+Step 1) Add data to sql database
+Step 2) make model by:
+php artisan make:model <modelName>
+php artisan make:model Pizza
+
+Step 3) File Sturcture:
+<project>
+-Models
+    -<modelName>.php
+    eg: Pizza.php
+
+Step 4) Inside app>Http>Contollers>PizzaController.php
+use App\Models\<modelName>
+use App\Models\Pizza
+
+..
+class PizzaController extends Controller{
+    public function index(){
+                
+        //$pizzas = Pizza::all();  To get data from db in normal way
+        //$pizzas = Pizza::orderBy('name')->get();  To get in ascending order by default
+        //$pizzas = Pizza::orderBy('name','desc')->get();  To get in descending order
+        //$pizzas =  Pizza::where('type','hawaiian')->get();  To get the data from db whose type is hawaiian filtering 
+        //$pizzas= Pizza::latest()->get();  To get data according to date(Latest one comes first)
+
+        return view('pizzas',['pizzas' => $pizzas]);
+    }
+
+}
+
+Step 5) Inside resources>views>pizzas.blade.php
+
+@extends('layouts.layout')
+
+@section('content')
+        <div class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="title m-b-md">
+                    Pizza List
+                </div>
+                @foreach($pizzas as $pizza)
+                    <div>
+                      {{ $pizza->name }} - {{ $pizza->type }} - {{ $pizza->base }}
+                    </div>
+                @endforeach
+            </div>
+        </div>
+@endsection
+
+

@@ -1,0 +1,53 @@
+1. Inside routes>web.php
+
+Route::post('/pizzas',[PizzaController::class,'store']);
+
+2. Inside Controllers>PizzaController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Pizza;
+
+class PizzaController extends Controller{
+    ..
+
+    public function store(){
+        error_log(request('name'));
+        error_log(request('type'));
+        error_log(request('base'));
+        return redirect('/');
+    }
+}
+
+3. Inside views>pizzas>create.blade.php
+
+@extends('layouts.layout')
+
+@section('content')
+<div class="wrapper create-pizza">
+<h1>Create a New Pizza</h1>
+<form action="/pizzas" method="POST">
+    @csrf //This line has to be added to provide safe redirects
+    <label for="name">Your name:</label>
+    <input type="text id="name" name="name">
+    <label for="type">Choose pizza type:</label>
+    <select name="type" id="type">
+        <option value="margarita">margarita</option>
+        <option value="hawaiian">hawaiian</option>
+        <option value="veg supreme">veg supreme</option>
+        <option value="volcano">volcano</option>
+    </select>
+    <label for="base">Choose base type:</label>
+    <select name="base" id="base">
+        <option value="cheesy crust">cheesy crust</option>
+        <option value="garlic crust">garlic crust</option>
+        <option value="thin & crispy">thin & crispy</option>
+        <option value="thick">thick</option>
+    </select>
+    <input type="submit" value="Order Pizza">
+</form>
+</div>
+@endsection

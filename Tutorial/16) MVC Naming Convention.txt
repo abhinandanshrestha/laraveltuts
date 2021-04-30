@@ -1,0 +1,13 @@
+To add new pizza to the data base
+1. Add to the routes>web.php 
+Route::get('/pizzas/create', [PizzaController::class,'create']);
+
+2.Add
+
+public function create(){
+    return view('pizzas.create',);
+}
+
+3. create a new file at the location resources>views>pizzas>create.blade.php
+
+4. add html..

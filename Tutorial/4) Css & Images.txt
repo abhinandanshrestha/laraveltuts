@@ -1,0 +1,7 @@
+File Structure:
+-public
+  -css (this is the folder)
+      -main.css
+  -img (this is the folder)
+      -<imageName>.jpg
+      -<imageName>.png

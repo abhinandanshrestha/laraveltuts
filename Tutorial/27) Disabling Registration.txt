@@ -1,0 +1,6 @@
+1) php artisan route:list
+2) go to routes>web.php
+
+Auth::routes([
+    'register' => false
+]);

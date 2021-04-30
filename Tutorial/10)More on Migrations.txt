@@ -1,0 +1,19 @@
+If we want to add new column
+----------------------------
+Method1(Try not to use this method):
+a. add code
+b. php artisan migrate:rollback
+c. php artisan migrate
+---------------------------------------
+Method2:
+a. php artisan make:migration add_price_to_pizzas_table
+b. inside add_price_to_pizzas_table:
+    public function up()
+    {
+        Schema::table('pizzas', function (Blueprint $table) {
+            $table->integer('price');
+        });
+    }
+c. php artisan migrate
+------------------------------------------
+check status by php artisan migrate:status

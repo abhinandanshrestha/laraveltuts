@@ -1,0 +1,65 @@
+Make a new terminal & type as ..
+php artisan make:controller <ControllerName>
+php artisan make:controller PizzaController
+
+So, we get a contoller inside the file structure as
+<project>
+ -app
+    -Http
+        -Controllers
+            -PizzaController
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+Then, 
+in views>web.php
+
+//Before
+Route::get('/', function () {
+    return view(....);
+});
+
+Route::get('/pizzas/{id}', function ($id) {
+    return view('details',['id' => $id]);
+});
+
+Change the code to as
+add header
+use App\Http\Controllers\PizzaController;
+.
+.
+Route::get('/pizzas', [PizzaController::class,'index']);
+
+Route::get('/pizzas/{id}', [PizzaController::class,'show']);
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+And we get file at App>Http>Controllers>PizzaController as
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class PizzaController extends Controller{
+    public function index(){
+                //Query Parameters
+                $name = request('name');
+                $age = request('age');
+
+                $pizza = [
+                    ['type' => 'hawaiian', 'base' => 'cheesy crust'],
+                    ['type' => 'volcano', 'base' => 'garlic crust'],
+                    ['type' => 'veg supreme', 'base' => 'thin & crispy'],
+                ];
+
+                return view('pizzas',['pizzas' => $pizza,'name' => $name,'age' => $age]);
+    }
+
+    public function show($id){
+            //use the $id variable to query the db for a record
+            return view('details',['id' => $id]);
+    }
+
+}

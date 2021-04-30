@@ -1,0 +1,17 @@
+Method 1:
+go to routes>web.php
+
+Route::get('/pizzas', [PizzaController::class,'index'])->middleware('auth');
+Route::get('/pizzas/{id}', [PizzaController::class,'show'])->middleware('auth');
+Route::delete('/pizzas/{id}',[PizzaController::class,'delete'])->middleware('auth');
+
+Method 2:
+go to app>Http>Controllers>PizzaController
+
+class PizzaController extends Controller{
+    public function __construct(){
+        $this->middleware('auth);
+    }
+}
+
+But this is gonna apply to all. So, people have to login to do all the stuffs
